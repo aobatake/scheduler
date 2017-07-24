@@ -57,16 +57,16 @@ def createClassDictionary(tree):
       info_array = []
       info_dict = {}
       for data in table:
-        if k == 0:
+        k += 1
+        if k == 1:
           info_dict['Days'] = data
-        elif k == 1:
+        elif k == 2:
           info_dict['Time'] = data
-        elif k == 3:
+        elif k == 4:
           info_dict['Room'] = data
           info_array.append(info_dict)
           info_dict = {}
           k = 0
-        k += 1
       class_dict['info'] = info_array
     j += 1
   return class_dict

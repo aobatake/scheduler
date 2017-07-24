@@ -25,7 +25,7 @@ department = tree.xpath("//div[@class='columns']/div/ul/li/a/text()")
 department = map(lambda x: x[x.index('(') + 1: x.index(')')], department)
 
 # -- Get CRN link inside the department page
-i = 39
+i = 44
 collection = db[department[i]]
 classes_page = requests.get(root_url +  department_links[i].replace("./", ""))
 tree = html.fromstring(classes_page.content)
@@ -76,8 +76,16 @@ for link in crn_links:
       table = filter(lambda x: x!= '\n', table)
       table = map(lambda x: x.strip("\n"), table)
       table = map(lambda x: x.strip(u'\xa0\n'), table)
+      k = 0
       for data in table:
-        print data
+        k += 1
+        if k == 1:
+          print data
+        elif k == 2:
+          print data
+        elif k == 4:
+          print data
+          k = 0
     j += 1
   print '\n'
 
